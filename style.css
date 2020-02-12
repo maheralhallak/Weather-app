@@ -6,7 +6,7 @@
 
 body {
     font-family: Impact, 'Arial Narrow Bold', sans-serif;
-    background-image: url(/img/background.jpg)  ;
+    background-image: url(./img/background.jpg)  ;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
