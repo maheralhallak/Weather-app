@@ -19,6 +19,7 @@ function getResults(query) {
     }).then(displayResults)
 }
 
+
 function displayResults(weather) {
     let city = document.querySelector('.location .city');
     city.innerText = ` ${weather.name}, ${weather.sys.country}`;
@@ -31,6 +32,8 @@ function displayResults(weather) {
     temp.innerHTML = `${Math.round(weather.main.temp)}<span> ˚C </span> `;
     let weather_el = document.querySelector('.current .weather')
     weather_el.innerText = weather.weather[0].main;
+    let item = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
+    document.querySelector('.current .icon').setAttribute('src',item)
 
     let hilow = document.querySelector('.hi-low');
     hilow.innerText = `${Math.round(weather.main.temp_min)}˚C / ${Math.round(weather.main.temp_max)} ˚C `;
@@ -45,4 +48,9 @@ function dateBuilder(d) {
     let month = months[d.getMonth()]
     let year = d.getFullYear();
     return `${day} ${date} ${month} ${year} `
+
+
+    
 }
+
+
