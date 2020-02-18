@@ -14,9 +14,8 @@ function setQuery(evt) {
 
 function getResults(query) {
     fetch( `${api.base}weather?q=${query}&units=metric&APPID=${api.key}` )
-    .then(weather => {
-        return weather.json()
-    }).then(displayResults)
+    .then(weather => weather.json())
+    .then(displayResults)
 }
 
 
@@ -37,6 +36,7 @@ function displayResults(weather) {
 
     let hilow = document.querySelector('.hi-low');
     hilow.innerText = `${Math.round(weather.main.temp_min)}˚C / ${Math.round(weather.main.temp_max)} ˚C `;
+    changeBg();
 }
 
 function dateBuilder(d) {
@@ -51,4 +51,27 @@ function dateBuilder(d) {
 
 }
 
+function changeBg(b) {
+  
+    var b = document.body;
+    let weather_el = document.querySelector('.current .weather')
 
+    if ( weather_el.innerText.toLowerCase() === "rain" ) {
+        b.style.backgroundImage = 'url(https://media.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif)';
+
+    }
+
+    else if ( weather_el.innerText.toLowerCase() === "clouds" ) {
+        b.style.backgroundImage = 'url(https://media.giphy.com/media/1yQU0Ffah6z6w/giphy.gif)';
+    }
+    
+    else if ( weather_el.innerText.toLowerCase() === "clear" ) {
+        b.style.backgroundImage = 'url(https://media.giphy.com/media/26gskNyA6gkXlGE7e/giphy.gif)';
+    }
+
+    else if ( weather_el.innerText.toLowerCase() === "snow" ) {
+        b.style.backgroundImage = 'url(https://media.giphy.com/media/XcsdCc78BtNBu/giphy.gif)';
+
+    }
+    
+}
